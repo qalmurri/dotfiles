@@ -1,0 +1,21 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.secret
+*.key
+*.pem
+
+# Build artifacts
+*.o
+*.so
+*.a
+*.core
+/core
+
+# Editor and OS files
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
