@@ -1,5 +1,0 @@
-# Contoh kebutuhan lingkungan dwm/X11; sesuaikan sumber paket dan cara build.
-xorg-server
-xorg-xinit
-xterm
-dmenu
