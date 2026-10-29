@@ -1,0 +1,7 @@
+# Contoh paket dasar. Sesuaikan dengan instalasi yang kamu gunakan.
+base
+linux
+linux-firmware
+sudo
+git
+networkmanager
