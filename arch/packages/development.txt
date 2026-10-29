@@ -1,0 +1,4 @@
+# Contoh perangkat pengembangan.
+base-devel
+git
+neovim

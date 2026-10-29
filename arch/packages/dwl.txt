@@ -1,0 +1,4 @@
+# Contoh kebutuhan lingkungan dwl/Wayland; sesuaikan sumber paket dan cara build.
+wayland
+wayland-protocols
+foot
