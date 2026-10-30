@@ -1,5 +1,6 @@
-# Contoh kebutuhan lingkungan dwm/X11; sesuaikan sumber paket dan cara build.
+# Paket resmi untuk sesi X11 minimal.
 xorg-server
 xorg-xinit
 xterm
 dmenu
+xorg-xsetroot

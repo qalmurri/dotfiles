@@ -1,11 +1,7 @@
 # dwm (X11)
 
-Simpan konfigurasi khusus dwm di sini, misalnya `config.h`, daftar patch, dan skrip build.
+`install.sh` memasang dwm dari AUR menggunakan `makepkg`; konfigurasi default paket digunakan. Skrip tidak mengubah source atau konfigurasi dwm.
 
-Saran alur:
-1. Catat URL repository upstream dan commit/tag yang digunakan.
-2. Simpan konfigurasi milikmu sebagai `config.h`.
-3. Simpan patch buatan sendiri di `patches/` dan skrip bantu di `scripts/`.
-4. Terapkan konfigurasi pada source upstream ketika membangun dwm.
+Untuk kustomisasi, salin `config.def.h` dari source dwm yang dipakai menjadi `config.h`, lalu simpan patch dan catat versi/commit upstream di direktori ini. Integrasi build kustom belum otomatis; perbarui PKGBUILD lokal atau gunakan paket AUR yang kamu rawat sendiri agar perubahan dapat dibangun ulang dengan pacman.
 
-Folder ini adalah kerangka konfigurasi, bukan salinan source code upstream.
+Folder ini menyimpan konfigurasi milik repo, bukan source upstream.

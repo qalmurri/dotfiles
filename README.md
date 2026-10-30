@@ -1,44 +1,36 @@
-# dotfiles
+# Arch Linux minimal + dwm
 
-Repository untuk mengelola konfigurasi Arch Linux, aplikasi pengguna, serta window manager `dwm` (X11) dan `dwl` (Wayland).
+Starter ini menambahkan sesi X11 dengan dwm ke instalasi Arch Linux minimal yang sudah berjalan. Kernel, bootloader, jaringan, dan partisi harus sudah disiapkan sebelumnya.
 
-## Struktur
+## Instalasi
 
-- `stow/` — konfigurasi di home directory yang dikelola dengan GNU Stow.
-- `wm/dwm/` — konfigurasi, patch, dan skrip terkait dwm.
-- `wm/dwl/` — konfigurasi, patch, dan skrip terkait dwl.
-- `arch/packages/` — daftar paket Arch Linux per lingkungan.
-- `arch/etc/` — catatan/template konfigurasi sistem yang perlu dipasang secara terpisah.
-- `scripts/` — skrip pembantu repository.
-
-Direktori ini merupakan kerangka awal. File `.gitkeep` hanya menjaga direktori kosong tetap terlihat; ganti dengan konfigurasi milikmu saat siap.
-
-## Menghubungkan konfigurasi dengan GNU Stow
-
-Install Stow:
+Jalankan sebagai user biasa yang memiliki `sudo`:
 
 ```bash
-sudo pacman -S stow
+git clone <url-repo> dotfiles
+cd dotfiles
+bash install.sh
 ```
 
-Dari root repository, hubungkan paket yang sudah kamu isi:
+Skrip memasang `xorg-server`, `xorg-xinit`, `xterm`, `dmenu`, `xorg-xsetroot`, `base-devel`, dan `git` melalui pacman. dwm dibangun dari PKGBUILD AUR menggunakan `makepkg`; tinjau PKGBUILD dan konfirmasi prompt yang ditampilkan. Tidak ada display manager.
 
-```bash
-./scripts/stow.sh shell nvim
-```
+Skrip membuat `~/.xinitrc` dan menambahkan autostart `startx` pada login lokal TTY1 ke `~/.bash_profile`. File yang sudah ada tidak ditimpa. Jika `.xinitrc` sudah ada, pastikan file itu berakhir dengan `exec dwm`; jika `.bash_profile` punya alur login khusus, periksa blok `dotfiles-dwm-startx` setelah instalasi.
 
-Lepas symlink paket:
+Logout lalu login kembali pada TTY1 untuk memulai dwm. Pada instalasi headless atau mesin virtual, driver grafis mungkin perlu disiapkan tersendiri.
 
-```bash
-./scripts/stow.sh -D shell nvim
-```
+## Kontrol dwm bawaan
 
-Periksa atau cadangkan file tujuan yang sudah ada sebelum menjalankan Stow agar tidak terjadi konflik.
+- `Alt+Shift+Enter`: buka xterm.
+- `Alt+p`: buka dmenu.
+- `Alt+Shift+q`: keluar dari dwm.
 
-## dwm dan dwl
+Konfigurasi dwm dikompilasi saat build paket AUR. Untuk mengubah keybind atau tampilan, sesuaikan PKGBUILD dan `config.h` di proses build dwm; README di `wm/dwm/` menjelaskan direktori konfigurasi repo.
 
-Simpan `config.h`, patch, dan skrip khusus pada direktori window manager masing-masing. Simpan source upstream secara terpisah atau gunakan submodule; README di masing-masing direktori menjelaskan alur yang disarankan.
+## Isi repo
 
-## Keamanan
+- `arch/packages/`: daftar paket per kebutuhan.
+- `home/`: konfigurasi yang dapat ditempatkan ke home directory.
+- `wm/`: catatan konfigurasi window manager.
+- `install.sh`: pemasangan dwm minimal untuk Arch yang sudah terinstal.
 
-Jangan commit private key, token, kata sandi, file `.env`, kredensial, atau konfigurasi mesin yang sensitif. File di `arch/etc/` perlu ditinjau manual dan biasanya dipasang dengan hak akses administrator.
+Skrip dapat dijalankan ulang. Paket yang terpasang dilewati oleh pacman, dan blok autostart tidak ditambahkan dua kali.

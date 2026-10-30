@@ -1,4 +1,3 @@
-# Contoh perangkat pengembangan.
+# Paket untuk mengompilasi dwm dari AUR.
 base-devel
 git
-neovim
