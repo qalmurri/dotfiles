@@ -1,6 +1,6 @@
 # Paket resmi untuk sesi X11 minimal.
 xorg-server
 xorg-xinit
-xterm
+alacritty
 dmenu
 xorg-xsetroot

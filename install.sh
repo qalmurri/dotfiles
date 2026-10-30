@@ -30,6 +30,11 @@ build_dir="$(mktemp -d "${TMPDIR:-/tmp}/dwm-build.XXXXXX")"
 cleanup() { rm -rf -- "$build_dir"; }
 trap cleanup EXIT
 git clone https://aur.archlinux.org/dwm.git "$build_dir/dwm"
+config_file="$build_dir/dwm/config.h"
+[[ -f "$config_file" ]] || fail "config.h tidak ditemukan pada PKGBUILD dwm; tidak bisa mengatur binding Alacritty."
+grep -Eq 'termcmd.*"st"' "$config_file" || fail "Binding terminal dwm tidak cocok dengan konfigurasi yang diharapkan. Periksa $config_file."
+sed -E -i '/termcmd/ s/"st"/"alacritty"/' "$config_file"
+grep -Eq 'termcmd.*"alacritty"' "$config_file" || fail "Gagal mengatur binding terminal dwm ke Alacritty."
 (
   cd "$build_dir/dwm"
   makepkg -si
@@ -65,4 +70,4 @@ else
 fi
 
 printf '\nInstalasi selesai. Logout lalu login di TTY1 untuk membuka dwm.\n'
-printf 'Buka terminal dengan Alt+Shift+Enter; keluar dari dwm dengan Alt+Shift+Q.\n'
+printf 'Buka Alacritty dengan Alt+Shift+Enter; keluar dari dwm dengan Alt+Shift+Q.\n'

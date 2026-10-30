@@ -12,7 +12,7 @@ cd dotfiles
 bash install.sh
 ```
 
-Skrip memasang `xorg-server`, `xorg-xinit`, `xterm`, `dmenu`, `xorg-xsetroot`, `base-devel`, dan `git` melalui pacman. dwm dibangun dari PKGBUILD AUR menggunakan `makepkg`; tinjau PKGBUILD dan konfirmasi prompt yang ditampilkan. Tidak ada display manager.
+Skrip memasang `xorg-server`, `xorg-xinit`, `alacritty`, `dmenu`, `xorg-xsetroot`, `base-devel`, dan `git` melalui pacman. dwm dibangun dari PKGBUILD AUR menggunakan `makepkg`; skrip mengubah binding terminal dwm menjadi Alacritty. Tinjau PKGBUILD dan konfirmasi prompt yang ditampilkan. Tidak ada display manager.
 
 Skrip membuat `~/.xinitrc` dan menambahkan autostart `startx` pada login lokal TTY1 ke `~/.bash_profile`. File yang sudah ada tidak ditimpa. Jika `.xinitrc` sudah ada, pastikan file itu berakhir dengan `exec dwm`; jika `.bash_profile` punya alur login khusus, periksa blok `dotfiles-dwm-startx` setelah instalasi.
 
@@ -20,7 +20,7 @@ Logout lalu login kembali pada TTY1 untuk memulai dwm. Pada instalasi headless a
 
 ## Kontrol dwm bawaan
 
-- `Alt+Shift+Enter`: buka xterm.
+- `Alt+Shift+Enter`: buka Alacritty.
 - `Alt+p`: buka dmenu.
 - `Alt+Shift+q`: keluar dari dwm.
 
